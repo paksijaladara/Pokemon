@@ -60,7 +60,7 @@ export default class Pokemon extends Component {
 
     let { hp, attack, defense, speed, specialAttack, specialDefense } = "";
 
-    pokemonResponse.data.stats.map(stat => {
+    pokemonResponse.data.stats.forEach(stat => {
       switch (stat.stat.name) {
         case "hp":
           hp = stat["base_stat"];
@@ -79,6 +79,8 @@ export default class Pokemon extends Component {
           break;
         case "special-defense":
           specialDefense = stat["base_stat"];
+          break;
+        default:
           break;
       }
     });
@@ -120,10 +122,10 @@ export default class Pokemon extends Component {
     //   get pokemon description, catche rate, eggGroupss, gender, hatchstep
     await Axios.get(pokemonSpeciesUrl).then(Response => {
       let description = "";
-      Response.data.flavor_text_entries.some(flavor => {
+      Response.data.flavor_text_entries.forEach(flavor => {
         if (flavor.language.name === "en") {
           description = flavor.flavor_text;
-          return;
+          // return;
         }
       });
       const femaleRate = Response.data["gender_rate"];
@@ -209,6 +211,7 @@ export default class Pokemon extends Component {
                 <img
                   src={this.state.imageUrl}
                   className="card-img-top rounded mx-auto mt-2"
+                  alt=""
                 />
               </div>
               <div className="col-md-9">
@@ -361,7 +364,7 @@ export default class Pokemon extends Component {
           </div>
           <hr />
           <div className="card-body">
-            <h5 class="card-title text-center">Pokemon Profile</h5>
+            <h5 className="card-title text-center">Pokemon Profile</h5>
             <div className="row">
               <div className="col-md-6">
                 <div className="row">
@@ -448,9 +451,9 @@ export default class Pokemon extends Component {
               </div>
             </div>
           </div>
-          <div class="card-footer text-muted">
+          <div className="card-footer text-muted">
             Data From{" "}
-            <a href="https://pokeapi.co/" target="_blank" className="card-link">
+            <a href="https://pokeapi.co/" className="card-link">
               PokeAPI.co
             </a>
           </div>

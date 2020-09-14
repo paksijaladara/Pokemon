@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import CardPokemon from "./cardPokemon";
 import Axios from "axios";
-import SearchBox from "../components/searchbox";
 
 export default class listPokemon extends Component {
   state = {
-    url: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964",
+    url: "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100",
     pokemon: null
   };
 
@@ -17,9 +16,6 @@ export default class listPokemon extends Component {
   render() {
     return (
       <div>
-        <div>
-          <SearchBox />
-        </div>
         {this.state.pokemon ? (
           <div className="row">
             {this.state.pokemon.map(pokemon => (

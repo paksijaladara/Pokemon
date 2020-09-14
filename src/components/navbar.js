@@ -13,6 +13,7 @@ export default class navbar extends Component {
           <a
             className="navbar-brand col-sm-3 col-md-6 mr-0 align-item-center"
             style={{ color: "black", fontFamily: "bold", fontSize: "30px" }}
+            href="/"
           >
             Pokemon
           </a>
